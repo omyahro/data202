@@ -1,0 +1,72 @@
+---
+title: "Lab1Data_202"
+author: "Omyah Royals"
+date: "2024-09-22"
+output:
+  html_document:
+    theme: flatly
+    self_contained: true
+    mode: selfcontained
+  pdf_document: 
+editor_options:
+  markdown:
+    wrap: sentence
+---
+
+
+```{r setup, eval=F}
+#install.packages("devtools") 
+library(devtools)
+```
+
+```{r, eval=F}
+#install.packages("tidyverse", repos = "http://cran.us.r-project.org")
+#install.packages("remotes", repos = "http://cran.us.r-project.org")
+ 
+# load the necessary libraries
+library(tidyverse) 
+#collection of R packages designed for data science
+library(here) 
+# helps with filepaths
+
+library(dplyr)
+library(remotes)
+
+here::i_am("lab1.Rmd")
+```
+
+
+
+```{r}
+# use the remote install function to call in your data
+#remotes::install_github("professornaite/critstats", force=TRUE)
+
+# load the `critstats` library
+#library(critstats)
+
+# update the `critstats` package if needed
+#update.packages("critstats") 
+# I changed this by commenting out the code 
+
+#Manual Data Input (Africa Data All)
+library(readr)
+true_size_of_africa <- read_csv("data/true_size_of_africa.csv", 
+    col_types = cols(`Land Area (sq. km)` = col_number(), 
+        `Land Area (sq. mi)` = col_number(), 
+        `% of Africa` = col_number()))
+df1<-true_size_of_africa
+
+africa_data_all <- read_csv("data/africa_data_all.csv", 
+    col_types = cols(`Yearly change` = col_number(), 
+        `Net change` = col_number(), `Density (P/Km²)` = col_number(), 
+        `Land Area (Km²)` = col_number(), 
+        `Migrants (net)` = col_number(), 
+        `Fert. Rate` = col_number(), `Med. Age` = col_number(), 
+        `UrbanPop %` = col_number(), `World Share` = col_number()))
+df2<-africa_data_all
+```
+
+```{r}
+str(df1)
+```
+
